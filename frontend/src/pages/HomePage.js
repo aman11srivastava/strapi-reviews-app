@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
+import LoadingScreen from '../components/LoadingScreen'
+import ErrorScreen from '../components/ErrorScreen'
 
 const HomePage = () => {
     const {data, error, loading} = useFetch('http://localhost:1337/reviews')
     
-    if(loading) return <h1>Loading...</h1>
-    if(error) return <h1>Something went wrong!</h1>
+    if(loading) return <LoadingScreen/>
+    if(error) return <ErrorScreen/>
 
     return (
         <div>
